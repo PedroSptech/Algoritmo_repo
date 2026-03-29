@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt_venc1">
+    <input type="text" id="ipt_venc2">
+    <input type="text" id="ipt_venc3">
+    <input type="text" id="ipt_venc4">
+    <input type="text" id="ipt_venc5">
+
+    <button onclick="resultado()">Exibir resultado</button>
+
+    <div id="res"></div>
+    <p id="id_resultado"></p>
+</body>
+<script>
+    function resultado() {
+        let nomes = ["Pedro", "Jacob", "Vitor", "Lucas", "Miguel"]
+        
+        let count_certo = 0
+        let count_errado = 0
+        let nome_certos = []
+        let nomes_errados = []
+
+        let pessoa1 = ipt_venc1.value
+        let pessoa2 = ipt_venc2.value
+        let pessoa3 = ipt_venc3.value
+        let pessoa4 = ipt_venc4.value
+        let pessoa5 = ipt_venc5.value
+        
+        if (pessoa1 == nomes[0]) {
+            count_certo++
+            nome_certos.push(pessoa1) 
+        }else{
+            nomes_errados.push(pessoa1)
+            count_errado++  
+        } if (pessoa2 == nomes[1]) {
+            count_certo++
+            nome_certos.push(pessoa2)
+        }else{
+            nomes_errados.push(pessoa2)
+            count_errado++
+        } if (pessoa3 == nomes[2]) {
+            count_certo++
+            nome_certos.push(pessoa3)
+        }else{
+            nomes_errados.push(pessoa3)
+            count_errado++
+        } if (pessoa4 == nomes[3]) {
+            count_certo++
+            nome_certos.push(pessoa4)
+        }else{
+            nomes_errados.push(pessoa4)
+            count_errado++
+        } if (pessoa5 == nomes[4]) {
+            count_certo++
+            nome_certos.push(pessoa5)
+        }else{
+            nomes_errados.push(pessoa5)
+            count_errado++
+        }
+        res.innerHTML = `
+                <br>Você acertou ${count_certo} <br>
+                Você errou ${count_errado} <br>
+                Você acertou esses nomes ${nome_certos}<br> 
+                Você errou esses nomes ${nomes_errados}
+                `
+        if(count_certo > 2){
+            id_resultado.innerHTML = `Você conhece bem essa competição!`
+        }else{
+            id_resultado.innerHTML = `Você precisa acompanhar mais essa competição!`
+        }
+        
+    }
+</script>
+
+</html>

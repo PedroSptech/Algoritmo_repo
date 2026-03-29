@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="id_meta_econ" placeholder="Qual é a sua meta econômica ?">
+    <input type="number" id="id_guardado" placeholder="Quanto você tem de dinheiro guardado ?">
+    <button onclick="Calc_econ()">Analisar economia</button>
+    <h3 id="id_resultado"></h3>
+    <p id="id_result"></p>
+</body>
+<script>
+    function Calc_econ(){
+        let meta = Number(id_meta_econ.value)
+        let reserva = Number(id_guardado.value)
+
+        if(reserva == meta){
+            id_resultado.innerHTML = `Parabéns, meta alcançada!`
+            id_result.innerHTML = ``
+        }else if(reserva > meta){
+            let diferença = reserva - meta
+            id_resultado.innerHTML = `Parabéns, meta alcançada!`
+            id_result.innerHTML = `\n Meta ultrapassada em ${diferença} reais`
+        }else if(reserva < meta){
+            let faltante = meta - reserva
+            id_resultado.innerHTML = `Força! Ainda em busca da meta! Falta ${faltante}`
+            id_result.innerHTML = ``
+        }
+    }
+</script>
+</html>

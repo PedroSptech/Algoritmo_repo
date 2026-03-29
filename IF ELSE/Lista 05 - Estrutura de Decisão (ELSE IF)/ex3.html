@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="id_temp">
+    <button onclick="Calc_temp()">Temperatura</button>
+    <h3 id="id_resultado"></h3>
+</body>
+<script>
+    function Calc_temp(){
+        let temp = Number(id_temp.value)
+         if(temp < 14){
+            id_resultado.innerHTML = `Congelante `;
+
+         }else if(temp < 21){
+            id_resultado.innerHTML = `Com frio `;
+         }else if(temp < 24){
+            id_resultado.innerHTML = `Confortável `;
+         }
+         else if(temp < 31){
+            id_resultado.innerHTML = `Com calor `;
+         }else{
+            id_resultado.innerHTML = `Calor escaldante `;
+         }
+    }
+</script>
+</html>

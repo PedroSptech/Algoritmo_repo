@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id_mensagem" placeholder="Digite sua mensagem">
+    <button onclick="AnalisaMensagem()">Analisar mensagem</button>
+    <div id="id_resultado"></div>
+</body>
+<script>
+    
+
+    function AnalisaMensagem(){
+        let mensagem = id_mensagem.value
+        let classificacao =  "Mensagem comum"
+
+        if(mensagem == ""){
+            id_resultado.innerHTML += `Digite uma mensagem válida.<br>`
+        }if(mensagem.length < 10 && mensagem !== ""){
+            id_resultado.innerHTML += `Mensagem muito curta para análise.<br>`
+        }if(mensagem.includes('bob') == true){
+            id_resultado.innerHTML += `Atenção: usuário Bob mencionado na mensagem.<br>`
+        }if(mensagem.endsWith('.com') || mensagem.endsWith('.br')){
+            id_resultado.innerHTML += `A mensagem contém um possível link.<br>`
+            classificacao = "Mensagem com link"
+        }if(mensagem.includes('promoção') || mensagem.includes('grátis')){
+            id_resultado.innerHTML += `Possível mensagem de spam detectada.<br>`
+            classificacao = "Mensagem suspeita"
+        }if(mensagem.startsWith('Eu')){
+            id_resultado.innerHTML += `A mensagem parece estar escrita em primeira pessoa.<br>`
+        }
+        id_resultado.innerHTML += `<br>O tamanho da mensagem: ${mensagem.length}<br>`
+        id_resultado.innerHTML += `Começa com a palavra 'Eu': ${mensagem.startsWith("Eu")}<br>`
+        id_resultado.innerHTML += `Termina com '.com': ${mensagem.endsWith(".com")}<br>`
+        id_resultado.innerHTML += `Termina com '.br': ${mensagem.endsWith(".br")}<br>`
+        id_resultado.innerHTML += `A primeira letra é: ${mensagem[0]}<br>`
+        id_resultado.innerHTML += `A quarta letra é: ${mensagem[3]}<br>`
+        id_resultado.innerHTML += `A ultima letra é: ${mensagem[mensagem.length - 1]}<br>`
+        id_resultado.innerHTML += `O indice de 'Bob' é:' ${mensagem.indexOf('Bob')}<br>`
+        id_resultado.innerHTML += `A palavra 'bob' aparece: ${mensagem.includes('bob')}<br>`
+        id_resultado.innerHTML += `${mensagem.toUpperCase()}<br>`
+        id_resultado.innerHTML += `${mensagem.toLowerCase()}<br>`
+        id_resultado.innerHTML += `${mensagem.trim()}`
+
+        id_resultado.innerHTML += `<br><br>${classificacao}<br><hr><br>`
+    }
+</script>
+</html>

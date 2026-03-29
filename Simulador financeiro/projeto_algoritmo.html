@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+    <h1>SIMULADOR FINANCEIRO</h1>
+    
+    <input type="number" id="id_kg" placeholder="Kg por lote?">
+    <input type="number" id="id_valor" placeholder="Valor do kg?">
+    
+    <button onclick="Calc_prej()">Calcular</button>
+
+    <h3 id="id_resultado"></h3>
+    <p id="id_lotes"></p>
+    <p id="id_button"></p>
+    <p id="id_perda"></p>
+
+    <script>
+        function Calc_lotes() {
+            let peso = Number(id_kg.value);
+            let preco = Number(id_valor.value);
+            let frete = Number(id_fretes.value); 
+
+            let prejuizo_unitario = peso * preco;
+            let perda_total = prejuizo_unitario * frete;
+
+            id_perda.innerHTML = `Imagine perder todos os ${frete} lotes e ter um prejuízo de R$${perda_total.toFixed(2)}`;
+        }
+
+        function Calc_prej() {
+            let peso = Number(id_kg.value);
+            let preco = Number(id_valor.value);
+            let prejuizo = peso * preco;
+
+            id_resultado.innerHTML = `<p style='color: red;'>Imagine perder ${peso}kg de carne e ter um prejuízo de R$${prejuizo.toFixed(2)}</p>`;
+
+            if (prejuizo > 500) {
+                id_lotes.innerHTML = `<input type="number" id="id_fretes" placeholder="Quantos lotes por dia?">`;
+                
+                id_button.innerHTML = `<button onclick="Calc_lotes()">Calcular Perda Total</button>`;
+            } else {
+                id_lotes.innerHTML = "";
+                id_button.innerHTML = "";
+                id_perda.innerHTML = "";
+            }
+        }
+    </script>
+</body>
+</html>

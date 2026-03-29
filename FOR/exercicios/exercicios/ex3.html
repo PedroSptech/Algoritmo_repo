@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num_coca">
+    <button onclick="Calc_coca()">Ver a quantidade"</button>
+    <div id="resultado"></div>
+
+</body>
+<script>
+    function Calc_coca(){
+        resultado.innerHTML = ""
+        let coca = Number(num_coca.value)
+
+        for(let i = 0; i < coca; i++){
+            resultado.innerHTML += `<img style="width: 50px; height: 50px;" src="/assets/garrefa-coca.webp" alt="Garrafa vazia de coca-cola">`
+        }
+    }
+</script>
+</html>

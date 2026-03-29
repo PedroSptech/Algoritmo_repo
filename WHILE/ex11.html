@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="id_tabuada" name="tabuada">
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+    <br>
+    <br>
+    <input type="number" id="id_num">
+    <br>
+    <button onclick="Calc()">Ver Tabuada</button>
+    <div id="resultado"></div>
+</body>
+    <script>
+        function Calc(){
+            let escolha = Number(id_tabuada.value)
+            let num = Number(id_num.value)
+            let i = 0
+            while(i <= num){
+                if(i % 2 == 0){
+                    resultado.innerHTML += `<p style = "color: blue;"><br>${escolha} x ${i} = ${escolha * i}<br></p>`
+                }else{
+                    resultado.innerHTML += `<p style = "color: red;"><br>${escolha} x ${i} = ${escolha * i}<br></p>`
+                }i++
+            }
+        }
+    </script>
+</html>

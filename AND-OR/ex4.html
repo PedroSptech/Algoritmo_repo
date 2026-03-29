@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id_login">
+    <input type="password" id="id_senha">
+    <input type="text" id="id_informacao">
+    <br>
+    <br>
+    <button onclick="Autenticar()">Autenticar</button>
+    <br>
+    <p id="id_resultado"></p>
+</body>
+    <script>
+        function Autenticar(){
+            let login = id_login.value
+            let senha = id_senha.value
+            let informacao = id_informacao.value
+
+            if((login == "ana" && senha == "braga") && (informacao == "1949" || informacao == "louro josé")){
+                id_resultado.innerHTML = `Usuário autenticado`
+            }else{
+                id_resultado.innerHTML = `Falha na autenticação`
+            }
+        }
+    </script>
+</html>

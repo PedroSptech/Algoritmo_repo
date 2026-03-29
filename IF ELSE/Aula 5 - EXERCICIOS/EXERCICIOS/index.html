@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="id_ex1">
+        <input type="text" id="id_idade" placeholder="Digite a sua idade">
+        <button onclick="festa()">Ir para festa</button>
+    </div>
+    <br>
+    <div id="id_ex2">
+        <input type="text" id="id_refri_ano">
+        <button onclick="refri()">Quantos refris</button>
+        <p id="lata_ano"></p>
+        <h3 id="refri_frase"></h3>
+    </div>
+    <br>
+    <div id="id_ex3">
+        <input type="text" id="id_nota1">
+        <input type="text" id="id_nota2">
+        <input type="text" id="id_nota3">
+
+        <button onclick="nota()">Analisar desempenho</button>
+
+        <h3 id="nota_tela"></h3>
+
+        <p id="elogio_nota"></p>
+    </div>
+    <br>
+    <div id="id_ex4">
+        <input type="text" id="pizza_val">
+        <input type="text" id="amigos_reunidos">
+
+        <img src="https://s2-g1.glbimg.com/SYKHRenOvP75eH21u8KginJUfrc=/0x84:1679x1030/1080x608/smart/filters:max_age(3600)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/Z/4/SlJAp8TnugzAmkXCyMpg/g1-6-.jpg">
+
+        <button onclick="pizza()">Rola a pizza?</button>
+
+        <h3 id="paga"></h3>
+
+       <i><p id="caro" style = color:red></p></i>
+    </div>
+    <br>
+    <div id="id_ex5">
+        <input type="text" id="id_kwh">
+
+        <button onclick="conta_kwh()">Calcular conta de luz</button>
+    </div>
+
+</body>
+    <script>
+        function conta_kwh(){
+            let kwh = Number(id_kwh.value)
+
+            let conta = kwh * 0.85
+
+            if(kwh < 100){
+                desconto = conta * 0.10
+                saldo_final = conta - desconto
+
+                alert(saldo_final)
+            }else{
+                alert(conta)
+            }
+        }
+
+        function pizza(){
+            let val = pizza_val.value
+            let amg = amigos_reunidos.value
+
+            let media = val/amg
+
+            paga.innerHTML = `Cada amigo vai pagar R$${media} pela pizza`
+
+            if(media > 20){
+                caro.innerHTML = `Deu ruim! Pizza muito cara!`
+            }
+        }
+
+        function nota(){
+            let n1 = Number(id_nota1.value)
+            let n2 = Number(id_nota2.value)
+            let n3 = Number(id_nota3.value)
+
+            let media = (n1 + n2 + n3)/3
+
+            nota_tela.innerHTML = `Sua média foi de ${media}`
+
+            if(media > 9.4){
+                elogio_nota.innerHTML = ` Parabéns, você é fora de série! `
+            }
+        }
+
+        function festa(){
+        let idade = id_idade.value    
+        if(idade < 18){
+            alert("Pedir permissão pro responsável")
+            alert("#partiuFesta")
+        }else{
+            alert("#partiuFesta")
+        }
+    }
+
+    function refri(){
+        refris = Number(id_refri_ano.value)
+        total = refris * 365
+
+        lata_ano.innerHTML = `Latinhas por ano: ${total}`
+        if(total > 500){
+            refri_frase.innerHTML = `<br> Cuidado com a diabetes!`
+        }
+    }
+    </script>
+    
+</html>

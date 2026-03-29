@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="ex6">
+        <input type="number" id="val_renda" placeholder="Insira o valor da renda familiar ">
+        <input type="number" id="val_pres" placeholder="Insira o valor da prestação ">
+
+        <button onclick="veri_finan()">Verificar financiamento</button>
+
+        <h3 id="fami_renda"></h3>
+        <p id="comp_fami" style="color: red;"></p>
+        <script>
+            function veri_finan(){
+                let renda = Number(val_renda.value)
+                let prestacao = Number(val_pres.value)
+
+                let pres  =  (prestacao/renda)*100
+
+                fami_renda.innerHTML = `A prestação corresponde a ${pres}% da renda familiar`
+
+                if(pres > 30){
+                    comp_fami.innerHTML = `<br> <b>Será necessário complementar a renda familiar</b>`
+                }
+            }
+        </script>
+    </div>
+    <br>
+    <div id="ex7">
+        <input type="number" id="saldo_cont" placeholder="Insira o saldo da conta ">
+        <input type="number" id="val_deb" placeholder="Insira o valor do débito">
+
+        <button onclick="Calc_deb()">Analisar conta</button>
+
+        <h3 id="mens_sal" style = "color: red;"></h3>
+        <h3 id="mens_sala"><b></b></h3>
+        <script>
+            function Calc_deb(){
+                let conta = Number(saldo_cont.value)
+                let debito = Number(val_deb.value)
+
+                    sal_atual = conta - debito
+                    if(conta < 0){
+                        mens_sala.innerHTML = `O saldo atual da conta corrente é R$${sal_atual}`
+                    }
+                    else{mens_sal.innerHTML = `O saldo atual da conta corrente é R$${sal_atual}`}
+                }
+        </script>
+    </div>
+    <div id="ex8">
+        <input type="number" id="pessoasH" placeholder="Insira a quantidade de homens que entraram no elevador">
+        <input type="number" id="pessoasM" placeholder="Insira a quantidade de mulheres que entraram no elevador ">
+
+        <button onclick=" Calc_peso()">Analisar peso</button>
+
+        <h3 id="msg_1"></h3>
+        <p id="msg_2" style="color: blue;"></p>
+
+        <script>
+            function Calc_peso(){
+                let peso_H = Number(pessoasH.value)
+                let peso_M = Number(pessoasM.value)
+                
+                peso_total = (peso_H * 80) + (peso_M * 60)
+
+                if(peso_total > 800){
+                    msg_1.innerHTML = `Este elevador suporta 800 Kg e o peso estimado desta lotação é de ${peso_total}kg`
+                    msg_2.innerHTML = `<br>Será necessário que alguém desça para que o elevador se movimente`
+                    }else{
+                    msg_1.innerHTML = `Este elevador suporta 800 Kg e o peso estimado desta lotação é de ${peso_total}kg`    
+                    }
+            }
+        </script>
+    </div>
+    <div id="ex9">
+    <input type="text" id="id_serie" placeholder="Informe a última série assistida">
+
+    <input type="number" id="id_qtd_ep" placeholder="Total de episódios assistidos">
+
+    <button onclick="verificar()">Verificar nível</button>
+
+    <div id="id_resultado"></div>
+
+</div>
+
+<script>
+
+    function verificar(){
+
+        let serie = id_serie.value
+        let qtd = Number(id_qtd_ep.value)
+
+        let minutos_totais = qtd * 22
+        let horas_totais = minutos_totais / 60
+
+        id_resultado.innerHTML = `Vejo que você gosta da série ${serie} <br>`
+
+        if(horas_totais > 30){
+            id_resultado.innerHTML += `<br>Uau, você realmente gosta dessa série!`
+        }
+    }
+        </script>
+    </div>
+    <br>
+    <div id="id_ex10">
+    <input type="number" id="id_saldo" placeholder="Informe seu saldo bancário">
+
+    <button onclick="verificar()">Verificar finanças</button>
+
+    <h3 id="id_resultado"></h3>
+</div>
+    <script>
+        function verificar(){
+        let saldo = Number(id_saldo.value)
+        let h3 = document.getElementById("id_resultado")
+            if(saldo == 0){
+                id_resultado.innerHTML = `Conta zerada`
+                h3.style.color = "black"
+            }if(saldo < 0){
+                id_resultado.innerHTML = `Está devendo!`
+                h3.style.color = "red"
+            }if(saldo > 0){
+                id_resultado.innerHTML = `Saldo positivo! sorriso`
+                h3.style.color = "blue"
+            }
+        }
+    </script>
+
+
+</body>
+</html>

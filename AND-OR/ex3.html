@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form id="meu_formulario">
+
+    <fieldset id="tipo_passageiro">
+      <legend>Digite o seu tipo de passageiro:</legend>
+      <input type="radio" name="tipo" value="Comum">Comum
+      <input type="radio" name="tipo" value="Estudante">Estudante
+      <input type="radio" name="tipo" value="Idoso/PNE"> Idoso/PNE
+    </fieldset>
+    <br>
+    <fieldset id="tipo_passagem">
+      <legend>Digite o seu tipo de passagem: </legend>
+      <input type="radio" name="passagem" value="Passagem_única">Passagem única
+      <input type="radio" name="passagem" value="Passagem_integração">Passagem integração
+    </fieldset>
+  </form>
+  <br>
+  <button onclick="Simular_preco()">Simular preco</button>
+  <p id="id_resultado"></p>
+</body>
+<script>
+  function Simular_preco() {
+    let passageiro_tipo = meu_formulario.tipo.value;
+    let passagem_tipo = meu_formulario.passagem.value;
+    let passagem = 0
+
+    if (passageiro_tipo === "Idoso/PNE") {
+      passagem = 0;
+    }
+    else if (passageiro_tipo === "Estudante" && passagem_tipo === "Passagem_integração") {
+      passagem = 2.95;
+    } else if (passageiro_tipo !== "Comum") {
+      passagem = 2.20;
+    } else if (passageiro_tipo === "Comum" && passagem_tipo === "Passagem_integração") {
+        passagem = 5.90;
+      } else {
+        passagem = 4.40;
+      }
+      id_resultado.innerHTML = `Valor da passagem escolhida: R$ ${passagem.toFixed(2)}`;
+    }
+    
+</script>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="id_renda" placeholder="Insira a renda familiar mensal ">
+    <button onclick="analisa()">Analisar Renda</button>
+
+    <h3 id="id_resultado"></h3>
+</body>
+<script>
+    
+    function analisa(){
+        let renda = Number(id_renda.value)
+        if(renda <= 250){
+            id_resultado.innerHTML = `Classe E`
+        }else if(renda <= 900){
+            id_resultado.innerHTML = `Classe D`
+        }else if(renda <= 2500){
+            id_resultado.innerHTML = `Classe C`
+        }else if(renda <= 9500){
+            id_resultado.innerHTML = `Classe B`
+        }else{
+            id_resultado.innerHTML = `Classe A`
+        }
+    }
+</script>
+</html>

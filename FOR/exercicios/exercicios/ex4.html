@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="id_xicaras_cafe_leite">
+    <br>
+    <button onclick="Calcular()">Ver a quantidade</button>
+    <br>
+    <div id="resultado"></div>
+
+</body>
+    <script>
+        function Calcular(){
+            let cafe_leite = Number(id_xicaras_cafe_leite.value)
+
+            for(let i = 0; i < cafe_leite; i++){
+                resultado.innerHTML += `<br> <img style="width: 50px; height: 50px;" src="/assets/colher_com_leite_em_po.webp" alt="Colher de leite em pó "><br>`
+
+                console.log("OIIIIIIIIIIIIIII");
+                
+                
+                resultado.innerHTML += `<br> <img style="width: 50px; height: 50px;" src="/assets/Colher_com_cafe.jpg" alt="Colher_com_cafe"> <br>
+                <img style="width: 50px; height: 50px;" src="/assets/colher_com_cafe.jpg" alt="Colher de café "> <br> <br>
+                `
+            }
+        }
+    </script>
+</html>

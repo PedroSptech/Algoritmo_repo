@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_sala">
+    <button onclick="exibir()">Exibir Resumo</button>
+
+    <div id="id_resultado"></div>
+</body>
+    <script>
+        function exibir(){
+            let sala = ipt_sala.value;
+
+            let contemCco = sala.includes("CCO");
+            let indiceCco = sala.indexOf("CCO");
+
+            let teste = sala.substring(2,5);
+
+            let curso = sala.substring(1,4)
+            let turma = sala.substring(4,5)
+            let inicio = sala.substring(6,10)
+            let semestre = sala.substring(10)
+
+            id_resultado.innerHTML = `<br>
+            Contem CCO: ${contemCco} <br>
+            Indice CCO: ${indiceCco} <br>
+            Teste substring: ${teste} <br>
+            Vocé é do curso de ${curso}, da ${turma}, e iniciou em ${inicio}, seu semestre é ${semestre} 
+                                    `
+        }
+    </script>
+</html>

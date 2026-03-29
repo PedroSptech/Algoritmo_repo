@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="meu_formulario">
+    <label for="id_tamanho">Digite o tamanho da tela do celular:</label>
+    <input type="number" id="id_tamanho" placeholder="Tamanho da tela">
+    <br><br>
+    <fieldset id="grupo_cor">
+        <legend>Digite a cor do celular:</legend>
+        <input type="radio" name="cor" value="Vermelho"> Vermelho
+        <input type="radio" name="cor" value="Azul"> Azul
+        <input type="radio" name="cor" value="Prata"> Prata
+        <input type="radio" name="cor" value="Preto"> Preto
+    </fieldset>
+</form>
+
+<br>
+<button onclick="simulador()">Será que ele gosta?</button>
+<p id="id_resultado"></p>
+
+<script>
+    function simulador() {
+        let tamanho = Number(id_tamanho.value);
+        let corSelecionada = meu_formulario.cor.value; 
+
+        if (tamanho > 6.5 && (corSelecionada == "Preto" || corSelecionada == "Prata")) {
+            id_resultado.innerHTML = `<img src="./assets/feliz.jpg">`;
+        } else {
+            id_resultado.innerHTML = `<img src="./assets/triste.webp">`;
+        }
+    }
+</script>
+</html>

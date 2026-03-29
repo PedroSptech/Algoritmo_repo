@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invasão Impel Down</title>
+</head>
+<body>
+    <h3>Invasão de Impel Down</h3>
+
+    <br><label>Lutou quantas vezes : </label>
+    <input type="text" id="id_qtd_batalhas"><br>
+
+    <br><label>Derrotou quantos da marinha : </label>
+    <input type="text" id="id_qtd_marinheiros"><br>
+
+    <br><label>Levou quantas carnes para viagem : </label>
+    <input type="text" id="id_qtd_carne"><br>
+
+    <br><button onclick="batalhar()">WE ARE !!!!</button>
+    <br>
+    <br>
+    <div id="resultado"></div>
+
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <script>
+        function batalhar() {
+            let total_batalhas = Number(id_qtd_batalhas.value);
+            let marinheiros_por_batalha = Number(id_qtd_marinheiros.value);
+            let carne = Number(id_qtd_carne.value);
+
+            let energia_luffy = 100;
+            let derrota_total = false;
+            
+            resultado.innerHTML = ""; 
+
+            for (let i = 1; i <= total_batalhas; i++) {
+                
+
+                if (derrota_total == true || (energia_luffy <= 0 && carne <= 0)) {
+                    resultado.innerHTML += `<br>----------------------------------------<br>
+                    🛞 Não é possível iniciar a ${i}° batalha, acabou a carne e a energia.<br>`;
+                }else{
+
+                if (i > 1)
+                {
+                    energia_luffy -= 10;
+                }
+                let energia_inicial_batalha = energia_luffy;
+                let marinheiros_derrotados = 0;
+                let custo_batalha_marinha = marinheiros_por_batalha * 5;
+
+                if (energia_luffy < custo_batalha_marinha && carne > 0) {
+                    carne--;
+                    energia_inicial_batalha = energia_luffy;
+                    energia_luffy += 100;
+                    
+                }
+
+                resultado.innerHTML += `<br>----------------------------------------<br>
+                ${i}° Batalha Iniciada:<br>
+                Quantidade de Energia Inicial: ${energia_inicial_batalha.toFixed(0)}<br><br>`;
+
+                if (energia_luffy >= custo_batalha_marinha) {
+                    marinheiros_derrotados = marinheiros_por_batalha;
+                    energia_luffy -= custo_batalha_marinha;
+                    resultado.innerHTML += `Resultado: Luffy saiu vitorioso, derrotando ${marinheiros_derrotados} marinheiro(s)<br>`;
+                } else {
+                    marinheiros_derrotados = parseInt(energia_luffy / 5);
+                    energia_luffy = 0;
+                    derrota_total = true; 
+                    resultado.innerHTML += `Resultado: Luffy foi derrotado, derrotando ${marinheiros_derrotados} marinheiro(s)<br>`;
+                }
+
+                resultado.innerHTML += `⚡ Energia Restante no Final da Batalha: ${energia_luffy}<br>
+                🥩 Carnes Restantes no Final da Batalha: ${carne}<br>
+                `;
+                }
+            } 
+            resultado.innerHTML += `
+                            <br>
+                            <img src="/assets/one-piece-strawhats.gif" width="100%" style="max-width:500px; border-radius:10px;">
+                            <br>
+                            <p style="text-align:center; font-weight:bold;">Eu vou ser o Rei dos Piratas</p>
+                        `;
+        }
+    </script>
+</body>
+</html>

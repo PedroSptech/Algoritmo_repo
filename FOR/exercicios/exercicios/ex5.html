@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="id_deposito">
+    <input type="number" id="id_valor">
+    <button onclick="Calcular()">Acompanhar grana</button>
+    <div id="resultado"></div>
+    <hr>
+</body>
+    <script>
+        function Calcular(){
+            let deposito = Number(id_deposito.value)
+            let valor = Number(id_valor.value)
+            let total = Number(0)
+            for(let i = 1; i <= deposito; i++){
+                total = valor + total
+                resultado.innerHTML += `<br>${i} Mês: R$${total.toFixed(2)}<br>`
+            }resultado.innerHTML += `<br>Total guardado: ${total.toFixed(2)}<br>`
+
+        }
+    </script>
+</html>

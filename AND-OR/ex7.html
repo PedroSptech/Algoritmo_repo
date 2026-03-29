@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Autenticação Segura</title>
+</head>
+<body>
+
+    <h2>Login do Sistema</h2>
+    
+    Login: <input type="text" id="input_login"> <br>
+    Senha: <input type="password" id="input_senha"> <br>
+    <br>
+    <button onclick="autenticar()">Entrar</button>
+    <br>
+    <br>
+    <div id="div_mensagem"></div>
+
+    <script>
+        var tentativas = 3;
+        var bloqueado = false;
+
+        function autenticar() {
+            var login = input_login.value;
+            var senha = input_senha.value;
+            var mensagem = div_mensagem;
+
+            if (bloqueado) {
+                mensagem.innerHTML = `Usuário BLOQUEADO! Procure seu gerente!`;
+            }
+
+            if (login == "admin" && senha == "123") {
+                mensagem.innerHTML = `Autenticação realizada com sucesso!`;
+                tentativas = 3;
+            } else {
+                tentativas--; 
+                
+                var fraseErro = `<span>Falha de autenticação.</span><br>
+                                 Você ainda tem ${tentativas} tentativa(s)`;
+
+                if (tentativas <= 0) {
+                    bloqueado = true;
+                    mensagem.innerHTML = fraseErro + `Usuário BLOQUEADO! Procure seu gerente!`;
+                } else {
+                    mensagem.innerHTML = fraseErro;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

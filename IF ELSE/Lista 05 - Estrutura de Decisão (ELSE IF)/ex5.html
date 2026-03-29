@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input type="number" id="id_nota" placeholder="Insira a sua nota">
+<button onclick="Cal_nota()">Classificar aluno</button>
+<h3 id="id_resultado"></h3>
+</body>
+<script>
+    function Cal_nota(){
+        let nota = Number(id_nota.value)
+        if(nota < 5){
+            console.log("HEloooooooooooooooooooooo")
+            id_resultado.innerHTML = `Aluno precisa de muita ajuda`
+        }else if(nota > 5 && nota < 7){
+            id_resultado.innerHTML = `Aluno na média`
+        }else if(nota > 7 && nota < 9.5){
+            id_resultado.innerHTML = `Aluno na acima da média`
+        }else if(nota > 9.5){
+            id_resultado.innerHTML = `Aluno fora da curva`
+        }
+
+    }
+</script>
+</html>

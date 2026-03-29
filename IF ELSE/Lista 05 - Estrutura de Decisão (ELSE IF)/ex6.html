@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id_time" placeholder="Insiraum desses times São Paulo, Palmeiras, Corinthians, Santos">
+    <button onclick="Mostra_hino()">Fale sobre esse time</button>
+    <h3 id="id_resultado"></h3>
+</body>
+<script> 
+    
+    function Mostra_hino(){
+    let time = id_time.value    
+    if(time == 'São Paulo'){
+        id_resultado.innerHTML = `<p style='color: red;background-color: #000000'>Salve o Tricolor paulista</p>`
+    }else if(time == 'Corinthians'){
+        id_resultado.innerHTML = `<p style='color: white;background-color: #000000'>Salve o Corinthians</p>`
+    }else if(time == 'Santos'){
+        id_resultado.innerHTML = `<p style='color: black;background-color: white'>Agora quem dá a bola é o Santos</p>`
+    }else if(time == 'Palmeiras'){
+        id_resultado.innerHTML = `<p style='color: white; background-color: green'>Salve o alviverde imponente</p>`
+    }
+}
+</script>
+</html>

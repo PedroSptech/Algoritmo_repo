@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="id_palavra">
+    <br>
+    <button onclick="Validar()">Validar Palíndromo</button>
+    <br>
+    <div id="resultado"></div>
+</body>
+<script>
+    function Inverter(string) {
+        let texto_inversao = id_palavra.value.split("")
+        let texto_invertido = []
+
+        for (let i = texto_inversao.length - 1; i >= 0; i--) {
+            texto_invertido.push(texto_inversao[i])
+        }
+
+        return resultado.innerHTML = `${texto_invertido.join("")}`
+
+    }
+    function Validar() {
+        const texto_final = id_palavra.value
+        let texto_errado = texto_final
+        let texto = id_palavra.value.toLowerCase()
+        let pali = false
+        texto.split("")
+
+        for (let i = 0; i < texto.length; i++) {
+            if (texto[i] == texto[texto.length - 1 -i]) {
+                pali = true
+            } else {
+                pali = false
+                break
+            }
+        }
+        if (pali) {
+            resultado.innerHTML = `O nome "${texto_final}" é um palíndromo, porque ao contrário permanece sendo "${texto_final}"`
+        } else {
+            resultado.innerHTML = `O nome "${texto_final}" não é um palíndromo, porque ao contrário fica "${Inverter(texto_errado)}"`
+        }
+    }
+</script>
+
+</html>

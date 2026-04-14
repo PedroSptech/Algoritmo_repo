@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Antiguidades Dona Matilde</title>
+</head>
+
+<body>
+    <h2>Gestão de Estoque - Dona Matilde</h2>
+
+    <input type="text" id="ipt_antiguidade" placeholder="Nome da Antiguidade">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="verificarEstoque()">Verificar Estoque</button>
+    <div id="div_msg_estoque"></div>
+
+    <hr>
+
+    <input type="text" id="ipt_pesquisa" placeholder="Pesquisar item">
+    <button onclick="pesquisar()">Pesquisar</button>
+    <div id="div_msg_pesquisa"></div>
+
+    <hr>
+
+    <input type="text" id="ipt_nome_atual" placeholder="Nome Atual">
+    <input type="text" id="ipt_nome_novo" placeholder="Novo Nome">
+    <button onclick="alterar()">Alterar Nome</button>
+    <br>
+    <div id="id_alterar"></div>
+    <br><br>
+    <input type="text" id="ipt_remover" placeholder="Remover do estoque">
+    <button onclick="remover()">Remover Item</button>
+    <div id="div_msg_manutencao"></div>
+
+    <hr>
+
+    <button onclick="verificarDuplicados()">Itens Duplicados</button>
+    <div id="div_msg_duplicados"></div>
+
+</body>
+<script>
+    var listaAntiguidades = [];
+    var contador_push = 0
+
+    function cadastrar() {
+        let item = ipt_antiguidade.value;
+        listaAntiguidades.push(item);
+        console.log(listaAntiguidades);
+    }
+
+    function verificarEstoque() {
+        let tamanho = listaAntiguidades.length;
+        let mensagem = "";
+
+        if (tamanho < 3) {
+            mensagem = "A loja está quase vazia, precisamos de mais peças raras!";
+        } else if (tamanho <= 7) {
+            mensagem = "Temos algumas peças, mas ainda podemos melhorar o acervo";
+        } else if (tamanho <= 10) {
+            mensagem = "Ótimo! A loja já está bem interessante para os clientes";
+        } else {
+            mensagem = "Excelente! Nossa loja está cheia de relíquias incríveis!";
+        }
+
+        div_msg_estoque.innerHTML = mensagem;
+    }
+
+    function pesquisar() {
+        let tamanho = listaAntiguidades.length;
+        let pesquisa = ipt_pesquisa.value;
+        let contador = 0;
+
+        for (let i = 0; i < tamanho; i++) {
+            if (pesquisa == listaAntiguidades[i]) {
+                contador++
+                div_msg_pesquisa.innerHTML = `Temos o item ${pesquisa} e há ${contador} unidade(s) dele na loja`
+            } else {
+                div_msg_pesquisa.innerHTML = `Não encontramos o item ${pesquisa}, talvez seja hora de procurar essa raridade!`
+            }
+        }
+
+    }
+
+    function alterar() {
+        let atual = ipt_nome_atual.value;
+        let novo = ipt_nome_novo.value;
+        let local = atual.indexOf(atual);
+        let teste = false
+
+        if (listaAntiguidades.includes(atual)) {
+            teste = true;
+            listaAntiguidades[local] = novo
+            id_alterar.innerHTML = `O item ${atual} foi atualizado para ${novo}`;
+        } else {
+            id_alterar.innerHTML = `O item ${atual} não foi encontrado na loja`;
+        }
+    }
+
+    function remover() {
+        let remover = ipt_remover.value;
+        let tamanho = listaAntiguidades.length;
+        let count = 0;
+
+        for (let i = 0; i < tamanho; i++) {
+            if (listaAntiguidades[i] == remover) {
+                count++
+            }
+        }
+
+        if (listaAntiguidades.includes(remover)) {
+            let posicao = listaAntiguidades.indexOf(remover)
+            listaAntiguidades.splice(posicao, count)
+            div_msg_manutencao.innerHTML = `O item ${remover} foi removido do estoque.`
+        } else {
+            div_msg_manutencao.innerHTML = `O item ${remover} não está no estoque.`
+        }
+
+    }
+
+
+    function verificarDuplicados() {
+        let tamanho = listaAntiguidades.length;
+        let lista_reserva = [];
+        let encontrouAlgumDuplicado = false;
+
+        div_msg_duplicados.innerHTML = "";
+
+        for (let i = 0; i < tamanho; i++) {
+            let contador = 0
+
+            if (!lista_reserva.includes(listaAntiguidades[i])) {
+                for (let j = 0; j < tamanho; j++) {
+                    if (listaAntiguidades[i] == listaAntiguidades[j]) { contador++ }
+                }
+
+                if (contador > 1) {
+                    div_msg_duplicados.innerHTML += `${listaAntiguidades[i]} (${contador} unidades)<br><br>`
+                    encontrouAlgumDuplicado = true;
+                }
+                lista_reserva.push(listaAntiguidades[i])
+            }
+        }
+        if (encontrouAlgumDuplicado == false) {
+            div_msg_duplicados.innerHTML = "Não há itens duplicados no estoque, cada peça é única!";
+        }
+    }
+</script>
+
+</html>

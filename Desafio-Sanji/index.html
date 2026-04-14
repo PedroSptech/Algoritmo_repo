@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CADASTRAR</h1>
+    <input type="text" id="id_cadastro" placeholder="Cadastrar Estoque de Comidas">
+    <button onclick="Cadastrar()">Cadastrar</button>
+    <button onclick="Verifica()">Verificar Quantidade</button>
+    <br>
+    <br>
+    <div id="resultado"></div>
+    <hr>
+
+    <h1>PESQUISAR</h1>
+    <input type="text" id="id_pesquisa">
+    <button onclick="Pesquisar()">Pesquisar</button>
+    <button onclick="Estoque()">Exibir Estoque</button>
+    <br>
+    <br>
+    <div id="resultado_pesq"></div>
+    <br>
+    <div id="estoque_prod"></div>
+    <hr>
+    <input type="text" id="id_atual">
+    <input type="text" id="id_novo">
+    <br>
+    <br>
+    <button onclick="Alterar()">Alterar Nome</button>
+    <div id="altera_nome"></div>
+    <hr>
+    <input type="text" id="id_del">
+    <br>
+    <br>
+    <button onclick="Deletar()">Deleta Nome</button>
+    <div id="deleta_nome"></div>
+
+</body>
+    <script>
+        var estoque = []
+
+        function Cadastrar(){
+            let cadastro = id_cadastro.value
+            estoque.push(cadastro)
+            alert("Produto inserido no estoque")
+            console.log(estoque);
+        }
+
+        function Verifica(){
+            if(estoque.length <= 3){
+                resultado.innerHTML = `Desse jeito, o Luffy devora até o navio`
+            }else if(estoque.length > 3 && estoque.length < 7){
+                resultado.innerHTML = `O comilão do Luffy não vai deixar sobrar nenhuma comida`
+            }else if(estoque.length > 8 && estoque.length < 10){
+                resultado.innerHTML = `Assim, talvez sobre um pouco para a tripulação`
+            }else if(estoque.length > 10){
+                resultado.innerHTML = `Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a SENHORITA NAMIIIIIIIII!`
+            }
+        }
+
+        function Pesquisar(){
+            let pesquisa = id_pesquisa.value
+            let contador = 0
+            let comida 
+            for(let i = 0; i < estoque.length; i++){
+                if(pesquisa == estoque[i]){
+                    comida = estoque[i]
+                    contador++
+                }else{
+                    resultado_pesq.innerHTML = `Alguém vai ter que comprar ${pesquisa}, tá fazendo falta...`
+                }
+            }resultado_pesq.innerHTML = `Temos a comida ${comida} e há ${contador} unidade(s) dela`
+
+        }
+
+        function Estoque(){
+            let estoque_momento = []
+            let count = 0
+            for(let i = 0; i < estoque.length; i++){
+                for(let j = 0; j < estoque.length; j++){
+                    if(estoque[i] == estoque[j]){
+                    count++
+                    }
+                }
+                estoque_momento.push(`${estoque[i]} (${count} ${count > 1 ? 'unidades' : 'unidade'})`) 
+                count = 0;
+            }console.log(estoque_momento);
+
+
+            let ListaAux = []
+
+            for(let k = 0; k < estoque.length; k++){
+                if(!ListaAux.includes(estoque_momento[k])){
+                    ListaAux.push(estoque_momento[k])
+                }
+            }console.log(ListaAux);
+            for(let l = 0; l < ListaAux.length; l++){
+                estoque_prod.innerHTML += `<br>${ListaAux[l]}<br>`
+            }
+            
+        }
+
+        function Alterar(){
+            let antigo = id_atual.value
+            let novo = id_novo.value
+            for(let i = 0; i < estoque.length; i++){
+                if(antigo == estoque[i]){
+                    estoque[i] = novo
+                }else{
+                    altera_nome.innerHTML = `A comida ${antigo} não foi encontrada no estoque`
+                }
+            }altera_nome.innerHTML = `A comida ${antigo} foi alterada para ${novo}`
+        }
+        function Deletar(){
+            let nome_del = id_del.value
+            let deletado = []
+
+            if(estoque.includes(nome_del)){
+                for(let i = 0; i < estoque.length; i++){
+                    if(estoque[i] != deletado){
+                        deletado.push(estoque)
+                    }
+                }
+                deleta_nome.innerHTML = `A comida ${nome_del} foi removida do estoque`
+            }else{
+                 deleta_nome.innerHTML = `A comida ${nome_del} não está no estoque`
+            }
+            estoque = deletado
+        }
+
+    </script>
+</html>

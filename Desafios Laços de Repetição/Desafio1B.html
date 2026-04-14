@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="id_elemento">
+    <button onclick="Adcionar()">Adcionar</button>
+    <br>
+    <button onclick="duplicados()">Duplicados</button>
+    <br>
+    <br>
+    <div id="resultado"></div>
+</body>
+<script>
+    let lista = []
+    var count = 0
+
+    function Adcionar() {
+        resultado.innerHTML = ""
+        let elemento = id_elemento.value
+        lista[count] = elemento
+        count++
+        for (let k = 0; k < count; k++) {
+            resultado.innerHTML += `<br>${lista[k]}<br>`
+        }
+    }
+//Erro
+    function duplicados() {
+        resultado.innerHTML = ""
+        let duplicados = []
+        let vistos = []
+        for (let i = 0; i < count; i++) {
+            for (let j = 0; j < count; j++) {
+                if (vistos[i] == lista[j] && i != j) {
+                    if (duplicados[i] != lista[j]) {
+                        duplicados[i] = lista[j]
+                    }
+
+                } else {
+                    vistos[i] = lista[j];
+                }
+            }
+
+
+        } for (let k = 0; k < count; k++) {
+            resultado.innerHTML += `<br>${duplicados[k]}<br>`
+        }
+    }
+</script>
+
+</html>

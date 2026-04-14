@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id_texto">
+    <br>
+    <div id="resultado"></div>
+    <br>
+    <button onclick="Inverter()">Inverter</button>
+</body>
+    <script>
+        function Inverter(){
+            let texto_inversao = id_texto.value.split("")
+            let texto_invertido = []
+
+            for(let i = texto_inversao.length - 1; i >= 0; i--){
+                texto_invertido.push(texto_inversao[i])
+            }
+
+            resultado.innerHTML = `${texto_invertido.join("")}`
+
+        }
+    </script>
+</html>

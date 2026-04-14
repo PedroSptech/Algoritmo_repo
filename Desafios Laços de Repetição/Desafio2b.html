@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="id_texto">
+    <br>
+    <div id="resultado"></div>
+    <br>
+    <button onclick="Inverter()">Inverter</button>
+</body>
+<script>
+    function Inverter() {
+        let texto = id_texto.value;
+        let texto_invertido = ""
+        console.log(texto.length);
+        
+        for (let i = texto.length - 1; i >= 0; i--) {
+            texto_invertido += texto[i];
+        }
+
+        resultado.innerHTML = texto_invertido;
+    }
+</script>
+
+</html>

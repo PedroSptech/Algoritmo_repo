@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dado D20</title>
+</head>
+<body>
+    <button onclick="jogar()">jogar dado</button>
+    <div id="resultado"></div>
+
+    <script>
+        function jogar() {
+            let min = 1;
+            let max = 20;
+            let aleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+
+            resultado.innerHTML = `
+                <br>
+                <div style="
+                    width: 100px; 
+                    height: 100px; 
+                    background-color: #000000; 
+                    color: white; 
+                    font-size: 50px; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center;
+                ">
+                    ${aleatorio}
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

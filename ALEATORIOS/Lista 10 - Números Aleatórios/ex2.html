@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="time()">Sortear time</button>
+    <div id="resultado"></div>
+</body>
+    <script>
+        function time(){
+            let min = 1;
+            let max = 4;
+            let random = Math.random()
+
+            resultado.innerHTML = ""
+
+            let aleatorio = parseInt(random * (max - min + 1) + min)
+
+            if(aleatorio == 1){
+                resultado.innerHTML = `<img src='https://static.wikia.nocookie.net/logopedia/images/a/a1/Corinthians_2022_Logo_Gold.png/revision/latest/scale-to-width-down/250?cb=20250203061412'></img>`
+            }else if(aleatorio == 2){
+                resultado.innerHTML = `<img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/500px-Palmeiras_logo.svg.png"</img>`
+            }else if(aleatorio == 3){
+                resultado.innerHTML = `<img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg/3840px-Brasao_do_Sao_Paulo_Futebol_Clube.svg.png"</img>`
+            }else if(aleatorio == 4){
+                resultado.innerHTML = `<img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Santos_logo.svg/1280px-Santos_logo.svg.png"</img>`
+            }
+        }
+    </script>
+</html>

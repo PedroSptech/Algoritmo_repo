@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoKenPo</title>
+    <style>
+        img {
+            height: 200px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="jogar()">Jogar</button>
+    <br><br>
+    <div id="resultado"></div>
+
+    <script>
+        let vitoriasJ1 = 0;
+        let vitoriasJ2 = 0;
+
+        function jogar() {
+            let j1_num = Math.floor(Math.random() * 3) + 1;
+            let j2_num = Math.floor(Math.random() * 3) + 1;
+
+            let imgPedra = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqnJnwIiGKItrHGDDrDA-zMOqIVfTGJKpvJQ&s";
+            let imgPapel = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbvQIQ6A3AzXNSkjR_3_uvaytbz8UWhL7rjA&s";
+            let imgTesoura = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRouP8IKKxBJyv9n6TcvTslXNCnRZ6GhZNPw&s";
+
+            let jogada1, img1, jogada2, img2;
+
+            if (j1_num == 1) { jogada1 = 'pedra'; img1 = imgPedra; }
+            else if (j1_num == 2) { jogada1 = 'papel'; img1 = imgPapel; }
+            else { jogada1 = 'tesoura'; img1 = imgTesoura; }
+
+            if (j2_num == 1) { jogada2 = 'pedra'; img2 = imgPedra; }
+            else if (j2_num == 2) { jogada2 = 'papel'; img2 = imgPapel; }
+            else { jogada2 = 'tesoura'; img2 = imgTesoura; }
+
+            let status = "";
+
+            if (jogada1 === jogada2) {
+                status = "Empate!";
+            } else if (
+                (jogada1 == 'papel' && jogada2 == 'pedra') ||
+                (jogada1 == 'pedra' && jogada2 == 'tesoura') ||
+                (jogada1 == 'tesoura' && jogada2 == 'papel')
+            ) {
+                vitoriasJ1++;
+                status = "O jogador 1 venceu!";
+            } else {
+                vitoriasJ2++;
+                status = "O jogador 2 venceu!";
+            }
+
+            resultado.innerHTML = `
+                <img src="${img1}"> x <img src="${img2}">
+                <p><strong>${status}</strong></p>
+                <p>Jogador 1: ${vitoriasJ1} vitória(s)</p>
+                <p>Jogador 2: ${vitoriasJ2} vitória(s)</p>
+            `;
+        }
+    </script>
+</body>
+
+</html>

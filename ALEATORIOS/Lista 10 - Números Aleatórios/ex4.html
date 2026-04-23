@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="Sortear()">Sortear Nota para aluno</button>
+    <div id="resultado"></div>
+</body>
+    <script>
+        function Sortear(){
+            let min = 0
+            let max = 10
+
+            let random = Math.random()
+
+            let aleatorio = random * (max - min + 1) + min
+
+            resultado.innerHTML = `${aleatorio.toFixed(1)}`
+        }
+    </script>
+</html>

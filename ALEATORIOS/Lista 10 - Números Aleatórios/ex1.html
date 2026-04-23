@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="Sortear()">Sortear</button>
+    <div id="resultado"></div>
+</body>
+    <script>
+        function Sortear(){
+            let mensagem = ""
+            let random = Math.random();
+            if(random > 0.5){
+                mensagem = "Eu arredondaria para 1"
+            }else{
+                mensagem = "Eu arredondaria para 0"  
+            }
+            resultado.innerHTML = `${random}, ${mensagem}`
+            
+        }
+    </script>
+</html>

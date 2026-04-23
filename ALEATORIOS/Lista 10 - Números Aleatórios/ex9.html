@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 9</title>
+</head>
+
+<body>
+    <button onclick="gerarNota()">Gerar uma nota entre 3 e 10</button>
+    <div id="div_nota"></div>
+    <button onclick="gerarFreq()">Gerar uma frequência entre 50 e 100</button>
+    <div id="div_freq"></div>
+    <button onclick="verAprovacao()">Ver Aprovação</button>
+    <div id="resultado"></div>
+
+    <script>
+        let nota = 0;
+        let freq = 0;
+
+        function gerarNota() {
+            nota = (Math.random() * 7) + 3;
+            div_nota.innerHTML = nota.toFixed(1);
+        }
+
+        function gerarFreq() {
+            freq = (Math.random() * 50) + 50;
+            div_freq.innerHTML = freq.toFixed(1);
+        }
+
+        function verAprovacao() {
+            let situacao = "reprovado";
+            if (nota >= 6 && freq >= 75) {
+                situacao = "aprovado";
+            }
+            resultado.innerHTML = `Com nota ${nota.toFixed(1)} e frequência ${freq.toFixed(1)}, o aluno está ${situacao}!`;
+        }
+    </script>
+</body>
+
+</html>

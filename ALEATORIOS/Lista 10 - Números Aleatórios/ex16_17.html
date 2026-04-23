@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 17</title>
+</head>
+
+<body>
+    Nome: <input type="text" id="ipt_nome"><br>
+    Sorte 1: <input type="number" id="ipt_n1"><br>
+    Sorte 2: <input type="number" id="ipt_n2"><br>
+    Sorte 3: <input type="number" id="ipt_n3"><br>
+    <button onclick="tentarSorte()">Sortear</button>
+    <div id="resultado"></div>
+
+    <script>
+        let totalSorteios = 0;
+
+        function tentarSorte() {
+            let nome = ipt_nome.value;
+            let n1 = Number(ipt_n1.value);
+            let n2 = Number(ipt_n2.value);
+            let n3 = Number(ipt_n3.value);
+
+            if (n1 < 1 || n1 > 100 || n2 < 1 || n2 > 100 || n3 < 1 || n3 > 100) {
+                alert("Digite números entre 1 e 100");
+                return;
+            }
+
+            totalSorteios++;
+            let sorteado = Math.floor(Math.random() * 100) + 1;
+
+            if (sorteado == n1 || sorteado == n2 || sorteado == n3) {
+                resultado.innerHTML += `<br>Parabéns, ${nome}! O seu número da sorte ${sorteado} foi sorteado após ${totalSorteios} sorteios!`;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercício 7</title>
 </head>
+
 <body>
-    
+    <button onclick="sortearCabalistico()">Quero um número cabalístico!</button>
+    <div id="resultado"></div>
+
+    <script>
+        function sortearCabalistico() {
+            let sorteado = Math.floor(Math.random() * 15) + 1;
+            let msg = "";
+
+            if (sorteado == 3 || sorteado == 4 || sorteado == 7 || sorteado == 10 || sorteado == 12) {
+                msg = "Eu S2 números cabalísticos!";
+            } else {
+                msg = "Ah, me dá um número bom na próxima!";
+            }
+
+            resultado.innerHTML = `Sorteado: ${sorteado} <br> ${msg}`;
+        }
+    </script>
 </body>
+
 </html>

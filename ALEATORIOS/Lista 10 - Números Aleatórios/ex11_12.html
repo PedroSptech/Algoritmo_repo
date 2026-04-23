@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 11 e 12</title>
+</head>
+
+<body>
+    <button onclick="avaliar()">Avaliar</button>
+    <div id="div_nota"></div>
+    <button onclick="verMedia()">Verificar Média</button>
+    <div id="div_media"></div>
+
+    <script>
+        let somaNotas = 0;
+        let qtdAvaliacoes = 0;
+
+        function obterEmoji(n) {
+            if (n <= 0.5) return "😭 Muito Triste";
+            if (n <= 1.5) return "☹️ Meio Triste";
+            if (n <= 3.5) return "😐 Neutro";
+            if (n <= 4.5) return "🙂 Feliz";
+            return "🤩 Muito Feliz";
+        }
+
+        function avaliar() {
+            let nota = Math.random() * 5;
+            somaNotas += nota;
+            qtdAvaliacoes++;
+
+            div_nota.innerHTML = `Nota recebida: ${nota.toFixed(1)} <br> ${obterEmoji(nota)}`;
+        }
+
+        function verMedia() {
+            if (qtdAvaliacoes > 0) {
+                let media = somaNotas / qtdAvaliacoes;
+                div_media.innerHTML = `Média geral: ${media.toFixed(1)} <br> ${obterEmoji(media)}`;
+            }
+        }
+    </script>
+</body>
+
+</html>

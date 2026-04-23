@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 18</title>
+</head>
+
+<body>
+    <p>Jogador 1: <span id="placar1">0</span></p>
+    <p>Jogador 2: <span id="placar2">0</span></p>
+    <p>Empate: <span id="placarE">0</span></p>
+    <button onclick="jogar()">Jogar</button>
+    <div id="status"></div>
+
+    <script>
+        let v1 = 0; let v2 = 0; let emp = 0;
+
+        function jogar() {
+            let d1 = Math.floor(Math.random() * 6) + 1;
+            let d2 = Math.floor(Math.random() * 6) + 1;
+
+            if (d1 > d2) {
+                v1++;
+                placar1.innerHTML = v1;
+            } else if (d2 > d1) {
+                v2++;
+                placar2.innerHTML = v2;
+            } else {
+                emp++;
+                placarE.innerHTML = emp;
+            }
+
+            if (v1 > v2) {
+                status.innerHTML = "O jogador 1 está vencendo!";
+            } else if (v2 > v1) {
+                status.innerHTML = "O jogador 2 está vencendo!";
+            } else {
+                status.innerHTML = "O jogo está empatado!";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>Buscar Filmes:</h2>
+
+  <span>Nome:</span>
+  <input type="text" id="ipt_nome">
+  <button onclick="pesquisarNome()">Pesquisar</button>
+
+  <span>Diretor:</span>
+  <input type="text" id="ipt_diretor">
+  <button onclick="pesquisarDiretor()">Pesquisar</button>
+
+  <span>Ano:</span>
+  <select id="ipt_ano_parametro">
+    <option value="maior_igual">&gt;=</option>
+    <option value="igual">==</option>
+    <option value="menor_igual">&lt;=</option>
+  </select>
+  <input type="number" id="ipt_ano">
+  <button onclick="pesquisarAno()">Pesquisar</button><br><br>
+
+  <span>Gênero:</span>
+  <input type="text" id="ipt_genero">
+  <button onclick="pesquisarGenero()">Pesquisar</button>
+
+  <span>Média:</span>
+  <select id="ipt_media_parametro">
+    <option value="maior_igual">&gt;=</option>
+    <option value="igual">==</option>
+    <option value="menor_igual">&lt;=</option>
+  </select>
+  <input type="text" id="ipt_media">
+  <button onclick="pesquisarMedia()">Pesquisar</button><br><br>
+
+  <button onclick="pesquisar()">Mostrar Todos</button>
+
+  <div id="div_resultado"></div>
+</body>
+
+</html>
+<script src="dados.js"></script>
+<script>
+  function pesquisarNome() {
+    let nome = ipt_nome.value
+    let count = 0
+    let msg = ''
+    let contador = 0
+
+    for (let i = 0; i < filmes.length; i++) {
+      if (filmes[i].nome.toLowerCase().includes(nome)) {
+        let tamanho = filmes[i].notas.length
+        for (let j = 0; j < filmes[j].notas.length; j++) {
+          contador += filmes[i].notas[j]
+          console.log(filmes[i].notas[j]);
+        }
+        let media = contador/tamanho
+        
+        msg += `<br>
+        Nome: ${filmes[i].nome}  | ${filmes[i].diretor} | Ano: ${filmes[i].ano} | Média: ${media.toFixed(2)} <br>`
+        count++
+      } else if (count = 0) {
+        msg = "Não há filmes com esse nome"
+      }
+    }
+    div_resultado.innerHTML = `${msg}`
+  }
+
+  function pesquisarDiretor(){
+    let diretores = ipt_diretor.value
+    let count = 0
+    let msg = ''
+    let contador = 0
+
+    for (let i = 0; i < filmes.length; i++) {
+      if (filmes[i].diretor.toLowerCase().includes(diretores)) {
+        let tamanho = filmes[i].notas.length
+        for (let j = 0; j < filmes[j].notas.length; j++) {
+          contador += filmes[i].notas[j]
+          console.log(filmes[i].notas[j]);
+        }
+        let media = contador/tamanho
+        
+        msg += `<br>
+        Nome: ${filmes[i].nome}  | ${filmes[i].diretor} | Ano: ${filmes[i].ano} | Média: ${media.toFixed(2)} <br>`
+        count++
+      } else if (count = 0) {
+        msg = "Não há filmes com esse nome"
+      }
+    }
+    div_resultado.innerHTML = `${msg}`
+  }
+
+  function pesquisarAno(){
+    let ano = Number(ipt_ano.value)
+    let parametro = ipt_ano_parametro.value
+    let count = 0
+    let msg = ''
+    let contador = 0
+
+    for(let i = 0; i < filmes.length; i++){
+      if(parametro == "maior_igual"){
+          if(filmes[i].ano >= ano){
+            let tamanho = filmes[i].notas.length
+            for (let j = 0; j < filmes[j].notas.length; j++) {
+            contador += filmes[i].notas[j]
+            console.log(filmes[i].notas[j]);
+        }
+        let media = contador/tamanho
+        
+        msg += `<br>
+        Nome: ${filmes[i].nome}  | ${filmes[i].diretor} | Ano: ${filmes[i].ano} | Média: ${media.toFixed(2)} <br>`
+        count++
+          }
+      }else if(parametro == "igual"){
+          if(filmes[i].ano == ano){
+            let tamanho = filmes[i].notas.length
+            for (let j = 0; j < filmes[j].notas.length; j++) {
+            contador += filmes[i].notas[j]
+            console.log(filmes[i].notas[j]);
+        }
+        let media = contador/tamanho
+        
+        msg += `<br>
+        Nome: ${filmes[i].nome}  | ${filmes[i].diretor} | Ano: ${filmes[i].ano} | Média: ${media.toFixed(2)} <br>`
+        count++
+          }
+      }else if(parametro == "menor_igual"){
+          if(filmes[i].ano <= ano){
+            let tamanho = filmes[i].notas.length
+            for (let j = 0; j < filmes[j].notas.length; j++) {
+            contador += filmes[i].notas[j]
+            console.log(filmes[i].notas[j]);
+        }
+        let media = contador/tamanho
+        
+        msg  += `<br>
+        Nome: ${filmes[i].nome}  | ${filmes[i].diretor} | Ano: ${filmes[i].ano} | Média: ${media.toFixed(2)} <br>`
+        count++
+          }
+        }
+      }
+    div_resultado.innerHTML = `${msg}`
+  }
+  function pesquisarGenero(){
+    let nome = ipt_nome.value
+    let count = 0
+    let msg = ''
+    let contador = 0
+
+    for (let i = 0; i < filmes.length; i++) {
+      if (filmes[i].nome.toLowerCase().includes(nome)) {
+        let tamanho = filmes[i].notas.length
+        for (let j = 0; j < filmes[j].notas.length; j++) {
+          contador += filmes[i].notas[j]
+          console.log(filmes[i].notas[j]);
+        }
+        let media = contador/tamanho
+        
+        msg += `<br>
+        Nome: ${filmes[i].nome}  | ${filmes[i].diretor} | Ano: ${filmes[i].ano} | Média: ${media.toFixed(2)} <br>`
+        count++
+      } else if (count = 0) {
+        msg = "Não há filmes com esse nome"
+      }
+    }
+    div_resultado.innerHTML = `${msg}`
+  }
+</script>

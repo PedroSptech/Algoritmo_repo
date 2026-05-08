@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista 11 - Funções com Retorno e Parâmetro</title>
+</head>
+
+<body>
+
+    <h1>Lista 11 - Funções com Retorno e Parâmetro</h1>
+
+    <h2>Soma</h2>
+    <input type="number" id="soma1" placeholder="Número 1">
+    <input type="number" id="soma2" placeholder="Número 2">
+    <button onclick="executarSoma()">Somar</button>
+
+    <h2>Distância entre Pontos</h2>
+    <input type="number" id="x1" placeholder="x1">
+    <input type="number" id="y1" placeholder="y1">
+    <input type="number" id="x2" placeholder="x2">
+    <input type="number" id="y2" placeholder="y2">
+    <button onclick="executarDistancia()">Calcular Distância</button>
+
+    <h2>Converter Tempo</h2>
+    <input type="number" id="tempo" placeholder="Segundos">
+    <button onclick="executarTempo()">Converter</button>
+
+    <h2>Número Primo</h2>
+    <input type="number" id="primo" placeholder="Número">
+    <button onclick="executarPrimo()">Verificar</button>
+
+    <h2>Fatorial</h2>
+    <input type="number" id="fatorial" placeholder="Número">
+    <button onclick="executarFatorial()">Calcular</button>
+
+    <h2>Média</h2>
+    <input type="number" id="valorMedia" placeholder="Digite um número">
+    <button onclick="adicionarMedia()">Adicionar</button>
+    <p>Lista: <span id="listaMedia"></span></p>
+    <button onclick="executarMedia()">Calcular</button>
+
+    <h2>Média Ponderada</h2>
+
+    <h3>Valores</h3>
+    <input type="number" id="valorMP" placeholder="Valor">
+    <button onclick="adicionarValorMP()">Adicionar</button>
+    <p>Valores: <span id="listaValoresMP"></span></p>
+
+    <h3>Pesos</h3>
+    <input type="number" id="pesoMP" placeholder="Peso">
+    <button onclick="adicionarPesoMP()">Adicionar</button>
+    <p>Pesos: <span id="listaPesosMP"></span></p>
+
+    <button onclick="executarMediaPonderada()">Calcular</button>
+
+    <h2>Resultado:</h2>
+    <p id="resultado"></p>
+
+    <script src="matematica.js"></script>
+
+    <script>
+        function mostrar(res) {
+            document.getElementById("resultado").innerText = res;
+        }
+
+        function executarSoma() {
+            let n1 = Number(document.getElementById("soma1").value);
+            let n2 = Number(document.getElementById("soma2").value);
+            mostrar(somar(n1, n2));
+        }
+
+        function executarDistancia() {
+            let x1 = Number(document.getElementById("x1").value);
+            let y1 = Number(document.getElementById("y1").value);
+            let x2 = Number(document.getElementById("x2").value);
+            let y2 = Number(document.getElementById("y2").value);
+            mostrar(calcularDistancia(x1, y1, x2, y2));
+        }
+
+        function executarTempo() {
+            let t = Number(document.getElementById("tempo").value);
+            mostrar(converterParaHoraMinutoSegundo(t));
+        }
+
+        function executarPrimo() {
+            let n = Number(document.getElementById("primo").value);
+            mostrar(ePrimo(n));
+        }
+
+        function executarFatorial() {
+            let n = Number(document.getElementById("fatorial").value);
+            mostrar(calcularFatorial(n));
+        }
+
+        let arrMedia = [];
+        let arrValoresMP = [];
+        let arrPesosMP = [];
+
+        function adicionarMedia() {
+            let valor = Number(document.getElementById("valorMedia").value);
+            arrMedia.push(valor);
+            document.getElementById("listaMedia").innerText = arrMedia.join(", ");
+        }
+
+        function executarMedia() {
+            mostrar(calcularMedia(arrMedia));
+        }
+
+        function adicionarValorMP() {
+            let valor = Number(document.getElementById("valorMP").value);
+            arrValoresMP.push(valor);
+            document.getElementById("listaValoresMP").innerText = arrValoresMP.join(", ");
+        }
+
+        function adicionarPesoMP() {
+            let peso = Number(document.getElementById("pesoMP").value);
+            arrPesosMP.push(peso);
+            document.getElementById("listaPesosMP").innerText = arrPesosMP.join(", ");
+        }
+
+        function executarMediaPonderada() {
+            if (arrValoresMP.length !== arrPesosMP.length) {
+                mostrar("Valores e pesos devem ter o mesmo tamanho!");
+                return;
+            }
+            mostrar(calcularMediaPonderada(arrValoresMP, arrPesosMP));
+        }
+    </script>
+
+</body>
+
+</html>

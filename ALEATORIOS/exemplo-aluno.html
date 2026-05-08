@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="adcionarNoFinal(alunos, 'Jacob')">Adcionar Aluno</button>
+    <button onclick="aluno()">OIIIIIIIII</button>
+    <div id="res"></div>
+</body>
+    <script src="funcoes-lista.js"></script>
+    <script>
+        let alunos = ['tom', 'bob', 'dan']
+        function addAluno(){
+            console.log(`Lista de alunos antes: ${alunos}`);
+            
+            let aluno_add = ipt_aluno.value
+            adcionarNoFinal(aluno_add)
+        }
+        function aluno(){
+            alterarLista(alunos,1,1,'Jacob')
+            console.log(alunos)
+        }
+    </script>
+</html>
